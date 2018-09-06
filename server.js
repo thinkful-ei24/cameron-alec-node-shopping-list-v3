@@ -1,3 +1,4 @@
+'use strict';
 
 const express = require('express');
 const router = express.Router();
@@ -50,6 +51,12 @@ app.post('/shopping-list', jsonParser, (req, res) => {
 app.delete('/shopping-list/:id', (req, res) => {
   ShoppingList.delete(req.params.id);
   console.log(`Deleted shopping list item \`${req.params.id}\``);
+  res.status(204).end();
+});
+
+app.delete('/recipes/:id', (req, res) => {
+  Recipes.delete(req.params.id);
+  console.log(`Deleted recipe item \`${req.params.id}\``);
   res.status(204).end();
 });
 
